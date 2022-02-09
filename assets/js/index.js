@@ -9,11 +9,12 @@ buttons[0].addEventListener('click', () => {
     showCount();
     if (count >= 100) {
         buttons[0].classList.add('disabled')
+        count = 0;
     }
     audio.onplaying = () => {
         buttons[0].classList.add('disabled')
     }
-    audio.onended = () =>{
+    audio.onended = () => {
         buttons[0].classList.remove('disabled')
     }
     audio.play();
@@ -22,9 +23,23 @@ buttons[0].addEventListener('click', () => {
 buttons[1].addEventListener('click', () => {
     count = 0;
     showCount();
-    
+
 })
 
 function showCount() {
     counter.innerText = count;
 }
+
+
+/* Work with Settings  */
+const settingWrapper = document.querySelector(".settings-wrapper"),
+    settingsButton = document.querySelector('.settings');
+
+settingsButton.addEventListener("click", function () {
+    settingWrapper.classList.toggle('active');
+    if (settingWrapper.classList.contains('active')) {
+        settingsButton.querySelector('span').innerHTML = '&times;';
+    }else{
+        settingsButton.querySelector('span').innerHTML = '&#9881;';
+    }
+})
