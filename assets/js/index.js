@@ -1,3 +1,4 @@
+/* 1. Selection & Work with Count Tasbhi */
 const buttons = document.querySelectorAll('.btn-group button');
 const counter = document.querySelector('.count');
 const audio = document.getElementById('audio');
@@ -31,7 +32,7 @@ function showCount() {
 }
 
 
-/* Work with Settings  */
+/* 2. Work with Settings  */
 const settingWrapper = document.querySelector(".settings-wrapper"),
     settingsButton = document.querySelector('.settings');
 
@@ -42,4 +43,31 @@ settingsButton.addEventListener("click", function () {
     }else{
         settingsButton.querySelector('span').innerHTML = '&#9881;';
     }
+})
+
+
+/* 3. Change Dua Functions  */
+const duaSelector = document.querySelector("#change-dua");
+duaSelector.addEventListener("change",function(event){
+    let value = event.target.value;
+    audio.src = `./assets/media/${value}`;
+    settingWrapper.classList.remove('active');
+    settingsButton.querySelector("span").innerHTML = '&#9881;';
+    count = 0;
+    counter.innerText = '0';
+    
+})
+
+/* 4. Change Theme Colors  */
+
+const themeColor = document.querySelector("#theme-color");
+themeColor.addEventListener('change',function(event){
+    let value = event.target.value;
+    document.body.style.backgroundColor = value;
+    settingsButton.style.backgroundColor = value;
+    counter.style.backgroundColor = value;
+    buttons[0].style.backgroundColor = value;
+    buttons[1].style.backgroundColor = value;
+    duaSelector.style.borderColor = value;
+
 })
